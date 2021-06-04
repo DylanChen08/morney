@@ -52,7 +52,7 @@
         &.zero {
           width: 25*2%;
         }
-        $bg: #f2f2f2;
+        $bg: #f3f3f3;  //键盘渐变色
         &:nth-child(1) {
           background: $bg;
         }
