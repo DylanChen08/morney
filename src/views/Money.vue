@@ -1,7 +1,7 @@
 <template>
   <Layout class-prefix="layout">
     <NumberPad/>
-    <Types xxx="dsfsf"/>
+    <Types />
     <Notes/>
     <Tags/>
   </Layout>
