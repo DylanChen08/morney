@@ -15,9 +15,11 @@ import {Component, Prop, Watch} from "vue-property-decorator";
 @Component
 export default class Types extends Vue {
   type = '-'// '-'表示支出 , '+' 表示收入
-  @Prop(Number) xxx: number | undefined
+  // @Prop(Number) xxx: number | undefined
   // Number ==> 运行检查
   // number|undefined ==> 编译检查
+  @Prop({default: '-'}) readonly value!: string
+
   selectType(type: string) {
     if (type !== '-' && type !== '+') {
       throw new Error('type is unknown !')
@@ -25,9 +27,11 @@ export default class Types extends Vue {
     this.type = type
   }
 
+  // 检测Type数据变化
   @Watch('type')
-  onTypeChanged(value: string, oldValue: string) {
-    this.$emit('@update:value', value)
+  onTypeChanged(value: string) {
+    console.log(222)
+    this.$emit('update:value', value)
   }
 }
 </script>

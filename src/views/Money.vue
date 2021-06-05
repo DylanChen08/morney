@@ -1,7 +1,9 @@
 <template>
   <Layout class-prefix="layout">
-    <NumberPad :value.sync="onUpdateAmount"/>
-    <Types  :value.sync="onUpdateType"/>
+    {{ record }}
+    <NumberPad @update:value="onUpdateAmount"/>
+    <!-- :value.sync="record.type"===@update:value="onUpdateType" -->
+    <Types :value.sync="record.type"/>
     <Notes @update:value="onUpdateNotes"/>
     <Tags :dataSource.sync="tags" @update:value="onUpdateTags"/>
   </Layout>
@@ -15,21 +17,35 @@ import Types from '@/components/Money/Types.vue';
 import Notes from '@/components/Money/Notes.vue';
 import Tags from '@/components/Money/Tags.vue';
 
+type Record = {
+  tags: string[]
+  notes: string
+  type: string
+  amount: number
+}
 
 @Component({components: {Tags, Notes, Types, NumberPad},})
 export default class Money extends Vue {
-  tags: Array = ['衣', '食', '住', '行']
-
-  onUpdateTags(tags:string) {
-    console.log(tags);
-  }
-  onUpdateAmount(){}
-  onUpdateType(type:string) {
-    console.log(types);
+  tags = ['衣', '食', '住', '行']
+  // record 必须符合 Record 类型
+  record: Record = {
+    tags: [], notes: '', type: '-', amount: 0
   }
 
-  onUpdateNotes(notes:string) {
+  onUpdateTags(value: string[]) {
+    this.record.tags = value
+  }
 
+  onUpdateAmount(value: string) {
+    this.record.amount = parseFloat(value)
+  }
+
+  // onUpdateType(value: string) {
+  //   this.record.type = value
+  // }
+
+  onUpdateNotes(value: string) {
+    this.record.notes = value
   }
 
 }
