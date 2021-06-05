@@ -8,20 +8,21 @@
 </template>
 
 <script lang="ts">
-  export default {
-    props: ['classPrefix'],
-    name: 'Layout'
-  };
+export default {
+  props: ['classPrefix'],
+  name: 'Layout'
+};
 </script>
 
 <style lang="scss" scoped>
-  .layout-wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  .content {
-    overflow: auto;
-    flex-grow: 1;
-  }
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content {
+  overflow: auto;
+  flex-grow: 1;
+}
 </style>

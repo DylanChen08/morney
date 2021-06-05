@@ -5,6 +5,7 @@
       <span class="name">备注</span>
       <input type="text"
              v-model="value"
+             @change="onValueChange"
              placeholder="在这里输入备注">
     </label>
   </div>
@@ -18,11 +19,9 @@ import {Component, Watch} from "vue-property-decorator";
 export default class Notes extends Vue {
   value: string = ''
 
-  @Watch('value')
-  onValueChange(value: string, oldValue: string) {
-    this.$emit('update:value', value)
+  onValueChange() {
+    this.$emit('update:value', this.value)
   }
-
 }
 </script>
 

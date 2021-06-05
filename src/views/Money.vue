@@ -5,7 +5,7 @@
     <!-- :value.sync="record.type"===@update:value="onUpdateType" -->
     <NumberPad :value.sync="record.amount"/>
     <Types :value.sync="record.type"/>
-    <Notes @update:value="onUpdateNotes"/>
+    <Notes :value.sync="record.notes"/>
     <Tags :dataSource.sync="tags" @update:value="onUpdateTags"/>
   </Layout>
 </template>
@@ -27,7 +27,7 @@ type Record = {
 
 @Component({components: {Tags, Notes, Types, NumberPad},})
 export default class Money extends Vue {
-  tags = ['衣', '食', '住', '行']
+  tags = ['衣', '食', '住', '行'] //为了保证有初始数据，不能和Types、NumberPad和Tags一样只做一个值的传输.
   // record 必须符合 Record 类型
   record: Record = {
     tags: [], notes: '', type: '-', amount: 999
@@ -37,17 +37,6 @@ export default class Money extends Vue {
     this.record.tags = value
   }
 
-  // onUpdateAmount(value: string) {
-  //   this.record.amount = parseFloat(value)
-  // }
-
-  // onUpdateType(value: string) {
-  //   this.record.type = value
-  // }
-
-  onUpdateNotes(value: string) {
-    this.record.notes = value
-  }
 
 }
 </script>
