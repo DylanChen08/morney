@@ -1,27 +1,38 @@
 <template>
   <Layout class-prefix="layout">
-    <NumberPad/>
-    <Types :xxx='0'/>
-    <Notes/>
-    <Tags :dataSource.sync="tags"/>
+    <NumberPad :value.sync="onUpdateAmount"/>
+    <Types  :value.sync="onUpdateType"/>
+    <Notes @update:value="onUpdateNotes"/>
+    <Tags :dataSource.sync="tags" @update:value="onUpdateTags"/>
   </Layout>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
+import {Component} from "vue-property-decorator";
 import NumberPad from '@/components/Money/NumberPad.vue';
 import Types from '@/components/Money/Types.vue';
 import Notes from '@/components/Money/Notes.vue';
 import Tags from '@/components/Money/Tags.vue';
 
-export default {
-  name: 'Money',
-  data() {
-    return {
-      tags: ['衣', '食', '住', '行']
-    }
-  },
-  components: {Tags, Notes, Types, NumberPad},
-};
+
+@Component({components: {Tags, Notes, Types, NumberPad},})
+export default class Money extends Vue {
+  tags: Array = ['衣', '食', '住', '行']
+
+  onUpdateTags(tags:string) {
+    console.log(tags);
+  }
+  onUpdateAmount(){}
+  onUpdateType(type:string) {
+    console.log(types);
+  }
+
+  onUpdateNotes(notes:string) {
+
+  }
+
+}
 </script>
 
 <style lang="scss">
