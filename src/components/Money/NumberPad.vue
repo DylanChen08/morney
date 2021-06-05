@@ -1,5 +1,5 @@
 <template>
-  <div class="numberPad" >
+  <div class="numberPad">
     <div class="output">{{ output }}</div>
     <div class="buttons">
       <button @click="inputContent" v-animate-css.click=animation>1</button>
@@ -26,10 +26,13 @@ import {Component, Prop} from 'vue-property-decorator';
 
 @Component
 export default class NumberPad extends Vue {
-  output: string = '0';
+  // output: string = '0';
   animation: string = 'bounceIn'
+  @Prop() readonly value!: number
+  output = this.value.toString()  // @Prop()不写类型，故需要做toString转换
 
   inputContent(event: { target: { textContent: any; }; }) {// 参数也需要指定类型
+    console.log(`Type of this.output **${typeof this.output}**`);
     console.log(`---按键[${event.target.textContent}]触发---`);
     const button = event.target
     const input = button.textContent as string
@@ -69,7 +72,7 @@ export default class NumberPad extends Vue {
   }
 
   ok() {
-    this.$emit('update:value',this.output)
+    this.$emit('update:value', this.output)
   }
 
 }
