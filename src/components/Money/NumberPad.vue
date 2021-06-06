@@ -71,6 +71,8 @@ export default class NumberPad extends Vue {
 
   ok() {
     this.$emit('update:value', this.output)
+    this.$emit('submit', this.output)
+    this.output = '0'
     console.log(`当前输出的数字为[${this.output}]`)
   }
 
