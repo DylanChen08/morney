@@ -17,9 +17,11 @@ import NumberPad from '@/components/Money/NumberPad.vue';
 import Types from '@/components/Money/Types.vue';
 import Notes from '@/components/Money/Notes.vue';
 import Tags from '@/components/Money/Tags.vue';
-import {model} from "@/model";
+import {recordListModel} from "@/models/recordListModel";
+import {tagListModel} from "@/models/tagLIstModel";
 
-const recordList= model.fetch()
+const recordList= recordListModel.fetch()
+const tagList = tagListModel.fetch()
 // type RecordItem = {
 //   tags: string[]
 //   notes: string
@@ -30,7 +32,7 @@ const recordList= model.fetch()
 
 @Component({components: {Tags, Notes, Types, NumberPad},})
 export default class Money extends Vue {
-  tags = ['衣', '食', '住', '行'] //为了保证有初始数据，不能和Types、NumberPad和Tags一样只做一个值的传输.
+  tags = tagList
   // record 必须符合 Record 类型
   recordList: RecordItem[] = recordList
   record: RecordItem = {
