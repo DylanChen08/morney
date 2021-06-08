@@ -2,21 +2,23 @@
   <div>
     <label class="notes">
       {{ value }}
-      <span class="name">备注</span>
+      <span class="name">{{ this.fieldName }}</span>
       <input type="text"
              v-model="value"
              @change="onValueChange"
-             placeholder="在这里输入备注">
+             :placeholder="this.placeHolder">
     </label>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import {Component, Watch} from "vue-property-decorator";
+import {Component, Watch, Prop} from "vue-property-decorator";
 
 @Component
 export default class Notes extends Vue {
+  @Prop({required: true}) readonly fieldName!: string
+  @Prop() readonly placeHolder?: string
   value: string = ''
 
   onValueChange() {
