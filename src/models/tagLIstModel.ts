@@ -1,6 +1,6 @@
 const localStorageKeyName = 'tagList'
 type Tag = {
-    id: string
+    id: any
     name: string
 }
 type TagListModel = {
