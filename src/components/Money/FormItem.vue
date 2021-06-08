@@ -16,7 +16,7 @@ import Vue from "vue";
 import {Component, Watch, Prop} from "vue-property-decorator";
 
 @Component
-export default class Notes extends Vue {
+export default class FormItem extends Vue {
   @Prop({required: true}) readonly fieldName!: string
   @Prop() readonly placeHolder?: string
   value: string = ''

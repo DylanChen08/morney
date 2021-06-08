@@ -12,7 +12,7 @@
 import Vue from "vue";
 import {Component} from "vue-property-decorator";
 import {tagListModel} from "@/models/tagLIstModel";
-import Notes from "@/components/Money/Notes.vue";
+import Notes from "@/components/Money/FormItem.vue";
 
 @Component({components: {Notes}})
 export default class EditLabel extends Vue {

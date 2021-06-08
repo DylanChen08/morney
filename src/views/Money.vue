@@ -5,7 +5,7 @@
     <!-- :value.sync="record.type"===@update:value="onUpdateType" -->
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
     <Types :value.sync="record.type"/>
-    <Notes :value.sync="record.notes" field-name="备注" place-holder="在这里输入备注"/>
+    <FormItem :value.sync="record.notes" field-name="备注" place-holder="在这里输入备注"/>
     <Tags :dataSource.sync="tags" @update:value="onUpdateTags"/>
   </Layout>
 </template>
@@ -15,10 +15,10 @@ import Vue from "vue";
 import {Component, Watch} from "vue-property-decorator";
 import NumberPad from '@/components/Money/NumberPad.vue';
 import Types from '@/components/Money/Types.vue';
-import Notes from '@/components/Money/Notes.vue';
 import Tags from '@/components/Money/Tags.vue';
 import {recordListModel} from "@/models/recordListModel";
 import {tagListModel} from "@/models/tagLIstModel";
+import FormItem from "@/components/Money/FormItem.vue";
 
 const recordList= recordListModel.fetch()
 const tagList = tagListModel.fetch()
@@ -30,7 +30,7 @@ const tagList = tagListModel.fetch()
 //   createAt?: Date //类/构造函数
 // }
 
-@Component({components: {Tags, Notes, Types, NumberPad},})
+@Component({components: {FormItem, Tags, Types, NumberPad},})
 export default class Money extends Vue {
   tags = tagList
   // record 必须符合 Record 类型
