@@ -6,14 +6,14 @@
       <input type="text"
              :value="value"
              @input="onValueChanged($event.target.value)"
-             :placeholder="this.placeHolder">
+             :placeholder="placeHolder">
     </label>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import {Component, Watch, Prop} from "vue-property-decorator";
+import {Component, Prop} from "vue-property-decorator";
 
 @Component
 export default class FormItem extends Vue {

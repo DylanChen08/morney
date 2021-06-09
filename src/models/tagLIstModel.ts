@@ -1,5 +1,5 @@
 import {mapActions} from "vuex";
-
+import createId from "@/lib/createId";
 const localStorageKeyName = 'tagList'
 type Tag = {
     id: any
@@ -28,8 +28,10 @@ const tagListModel: TagListModel = {
         if (names.indexOf(name) >= 0) {
             return 'duplicated'
         }
+
+        const id = createId().toString();
         // @ts-ignore
-        this.data.push({id: name, name: name});
+        this.data.push({id, name: name});
         this.save();
         return 'success'
     },
