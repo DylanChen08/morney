@@ -1,3 +1,5 @@
+import {mapActions} from "vuex";
+
 const localStorageKeyName = 'tagList'
 type Tag = {
     id: any
@@ -10,7 +12,10 @@ type TagListModel = {
     fetch: () => string[]
     create: (name: string) => 'success' | 'duplicated'
     save: () => void
+    update: (id: string, name: string) => 'success' | 'not found' | 'duplicated'
+    remove: (id: string) => boolean
 }
+// @ts-ignore
 const tagListModel: TagListModel = {
     data: [],
     fetch() {
@@ -30,7 +35,45 @@ const tagListModel: TagListModel = {
     },
     save() {
         window.localStorage.setItem('tagList', JSON.stringify(this.data))
-    }
+    },
+    update(id, name) {
+        // @ts-ignore
+        const idList = this.data.map(item => item.id)
+        if (idList.indexOf(id) >= 0) {
+            // console.log(111);
+            // @ts-ignore
+            const names = this.data.map(item => item.name);
+            if (names.indexOf(name) >= 0) {
+                console.log(222);
+                console.log(name);
+                return 'duplicated';
+            } else {
+                console.log(333);
+                // @ts-ignore
+                const tag = this.data.filter(item => item.id === id)[0];
+                console.log(tag);
+                // @ts-ignore
+                tag.name = name;
+                this.save();
+                return 'success';
+            }
+        } else {
+            return 'not found';
+        }
+    },
+    remove(id: string) {
+        let index = -1;
+        for (let i = 0; i < this.data.length; i++) {
+            // @ts-ignore
+            if (this.data[i].id === id) {
+                index = i;
+                break;
+            }
+        }
+        this.data.splice(index, 1);
+        this.save();
+        return true;
+    },
 
 }
 

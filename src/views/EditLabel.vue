@@ -1,15 +1,17 @@
 <template>
   <Layout>
     <div class="navBar">
-      <Icon class="leftIcon" name="left"/>
+      <Icon @click="goBack" class="leftIcon" name="left"/>
       <span class="title">编辑标签</span>
       <span class="rightIcon"></span>
     </div>
     <div class="form-wrapper">
-      <FormItem field-name="标签名" place-holder="请输入标签名"/>
+      <FormItem :value="tag.name"
+                @update:value="update"
+                field-name="标签名" place-holder="请输入标签名"/>
     </div>
     <div class="button-wrapper">
-      <Button>删除标签</Button>
+      <Button @click="remove">删除标签</Button>
     </div>
   </Layout>
 </template>
@@ -23,7 +25,7 @@ import Button from '@/components/Button.vue';
 
 @Component({components: {Button, FormItem}})
 export default class EditLabel extends Vue {
-
+  tag?: { id: string, name: string } = undefined;
   created() {
     console.log(this.$route.params);
     const id = this.$route.params.id
@@ -32,11 +34,30 @@ export default class EditLabel extends Vue {
     // @ts-ignore
     const tag = tags.filter(t => t.id === id)[0]
     if (tag) {
-      console.log(tag);
+      // @ts-ignore
+      this.tag = tag;
     } else {
       this.$router.replace('/404')
     }
   }
+
+  update(name: string) {
+    if (this.tag) {
+      tagListModel.update(this.tag.id, name);
+    }
+  }
+
+  remove() {
+    if (this.tag) {
+      tagListModel.remove(this.tag.id);
+    }
+  }
+
+  goBack() {
+    console.log('back');
+    this.$router.back();
+  }
+
 }
 </script>
 
