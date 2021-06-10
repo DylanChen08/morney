@@ -20,7 +20,7 @@ import {recordListModel} from "@/models/recordListModel";
 import {tagListModel} from "@/models/tagLIstModel";
 import FormItem from "@/components/Money/FormItem.vue";
 
-const recordList= recordListModel.fetch()
+const recordList = recordListModel.fetch()
 const tagList = tagListModel.fetch()
 // type RecordItem = {
 //   tags: string[]
@@ -45,9 +45,7 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
-    const item:RecordItem = JSON.parse(JSON.stringify(this.record))
-    item.createAt = new Date()
-    this.recordList.push(item)
+    recordListModel.save(this.record)
   }
 
   @Watch('recordList')
