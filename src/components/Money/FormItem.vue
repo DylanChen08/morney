@@ -21,8 +21,8 @@ export default class FormItem extends Vue {
   @Prop() readonly placeHolder?: string
   @Prop({default: ''}) value!: string;
 
-  onValueChanged() {
-    this.$emit('update:value', this.value)
+  onValueChanged(value) {
+    this.$emit('update:value', value)
   }
 }
 </script>
