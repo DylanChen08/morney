@@ -45,6 +45,7 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
+    //@ts-ignore
     recordListModel.save(this.record)
   }
 

@@ -112,7 +112,10 @@ export default class NumberPad extends Vue {
         width: 25*2%;
       }
 
-      $bg: #f3f3f3; //键盘渐变色
+      $bg: #ffffff; //键盘渐变色
+      //border: 1px solid red;
+      border-radius: 8px;
+
       &:nth-child(1) {
         background: $bg;
       }
@@ -138,9 +141,12 @@ export default class NumberPad extends Vue {
       }
 
       &:nth-child(12) {
-        background: darken($bg, 4*6%);
+        //background: darken($bg, 4*6%);
+        background-color: #1989fa;
       }
+
     }
   }
+
 }
 </style>
