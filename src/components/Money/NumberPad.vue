@@ -2,80 +2,70 @@
   <div class="numberPad">
     <div class="output">{{ output }}</div>
     <div class="buttons">
-      <button @click="inputContent" v-animate-css.click=animation>1</button>
-      <button @click="inputContent" v-animate-css.click=animation>2</button>
-      <button @click="inputContent" v-animate-css.click=animation>3</button>
-      <button @click="remove" v-animate-css.click=animation>删除</button>
-      <button @click="inputContent" v-animate-css.click=animation>4</button>
-      <button @click="inputContent" v-animate-css.click=animation>5</button>
-      <button @click="inputContent" v-animate-css.click=animation>6</button>
-      <button @click="clear" v-animate-css.click=animation>清空</button>
-      <button @click="inputContent" v-animate-css.click=animation>7</button>
-      <button @click="inputContent" v-animate-css.click=animation>8</button>
-      <button @click="inputContent" v-animate-css.click=animation>9</button>
-      <button class="ok" @click="ok" v-animate-css.click=animation>OK</button>
-      <button class="zero" @click="inputContent" v-animate-css.click=animation>0</button>
-      <button @click="inputContent" v-animate-css.click=animation>.</button>
+      <button @click="inputContent">1</button>
+      <button @click="inputContent">2</button>
+      <button @click="inputContent">3</button>
+      <button @click="remove">删除</button>
+      <button @click="inputContent">4</button>
+      <button @click="inputContent">5</button>
+      <button @click="inputContent">6</button>
+      <button @click="clear">清空</button>
+      <button @click="inputContent">7</button>
+      <button @click="inputContent">8</button>
+      <button @click="inputContent">9</button>
+      <button @click="ok" class="ok">OK</button>
+      <button @click="inputContent" class="zero">0</button>
+      <button @click="inputContent">.</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
 import {Component, Prop} from 'vue-property-decorator';
 
 @Component
 export default class NumberPad extends Vue {
-  // output: string = '0';
-  animation: string = 'bounceIn'
-  @Prop() readonly value!: number
-  output = this.value.toString()  // @Prop()不写类型，故需要做toString转换
+  @Prop() readonly value!: number;
+  output = this.value.toString();
 
-  inputContent(event: { target: { textContent: any; }; }) {// 参数也需要指定类型
-    const button = event.target
-    const input = button.textContent as string
-    if (this.output.length === 13) {
-      alert('最多13位!')
+  inputContent(event: MouseEvent) {
+    const button = (event.target as HTMLButtonElement);
+    const input = button.textContent!;
+    if (this.output.length === 16) {
       return;
     }
     if (this.output === '0') {
       if ('0123456789'.indexOf(input) >= 0) {
-        this.output = input
+        this.output = input;
       } else {
-        this.output += input
-
+        this.output += input;
       }
       return;
     }
-    if (this.output.indexOf('.') > 0) {
-      if (input === '.') {
-        return;
-      }
+    if (this.output.indexOf('.') >= 0 && input === '.') {
+      return;
     }
-    this.output += input
-    console.log(`当前输入的数字为[${input}]`)
-
+    this.output += input;
   }
 
   remove() {
     if (this.output.length === 1) {
-      this.output = '0'
+      this.output = '0';
     } else {
-      this.output = this.output.slice(0, -1)
+      this.output = this.output.slice(0, -1);
     }
   }
 
   clear() {
-    this.output = '0'
+    this.output = '0';
   }
 
   ok() {
-    this.$emit('update:value', this.output)
-    this.$emit('submit', this.output)
-    this.output = '0'
-    console.log(`当前输出的数字为[${this.output}]`)
+    this.$emit('update:value', this.output);
+    this.$emit('submit', this.output);
+    this.output = '0';
   }
-
 }
 </script>
 
@@ -112,9 +102,7 @@ export default class NumberPad extends Vue {
         width: 25*2%;
       }
 
-      $bg: #ffffff; //键盘渐变色
-      //border: 1px solid red;
-      border-radius: 8px;
+      $bg: #f2f2f2;
 
       &:nth-child(1) {
         background: $bg;
@@ -141,12 +129,9 @@ export default class NumberPad extends Vue {
       }
 
       &:nth-child(12) {
-        //background: darken($bg, 4*6%);
-        background-color: #1989fa;
+        background: darken($bg, 4*6%);
       }
-
     }
   }
-
 }
 </style>

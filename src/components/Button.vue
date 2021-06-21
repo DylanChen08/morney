@@ -1,7 +1,7 @@
 <template>
   <button class="button"
           @click="$emit('click', $event)">
-    <slot></slot>
+    <slot/>
   </button>
 </template>
 
@@ -11,14 +11,11 @@ import {Component} from 'vue-property-decorator';
 
 @Component
 export default class Button extends Vue {
+
 }
 </script>
 
 <style lang="scss" scoped>
-.xxx {
-  color: red
-}
-
 .button {
   background: #767676;
   color: white;
