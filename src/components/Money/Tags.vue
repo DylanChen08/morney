@@ -1,52 +1,51 @@
 <template>
   <div class="tags">
     <div class="new">
-      <button @click="createTag">新增标签</button>
+      <button @click="create">新增标签</button>
     </div>
     <ul class="current">
-      <li v-for="tag in dataSource"
-          :class="{selected:selectedTags.indexOf(tag)>=0}"
-          :key="tag.id"
+      <li v-for="tag in tagList" :key="tag.id"
+          :class="{selected: selectedTags.indexOf(tag)>=0}"
           @click="toggle(tag)">{{ tag.name }}
       </li>
-
     </ul>
   </div>
 
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import {Component, Prop} from "vue-property-decorator";
+import Vue from 'vue';
+import {Component, Prop} from 'vue-property-decorator';
+import store from '@/store/index2';
 
 @Component
 export default class Tags extends Vue {
-  @Prop(Array) readonly dataSource: string[] | undefined
-  selectedTags: string[] = []
+  tagList = store.fetchTags();
+  selectedTags: string[] = [];
 
   toggle(tag: string) {
     const index = this.selectedTags.indexOf(tag);
     if (index >= 0) {
-      this.selectedTags.splice(index, 1)
+      this.selectedTags.splice(index, 1);
     } else {
-      this.selectedTags.push(tag)
+      this.selectedTags.push(tag);
     }
-    this.$emit('update:value', this.selectedTags) //传给 Money.vue 改动数值
+    this.$emit('update:value', this.selectedTags);
   }
 
-  createTag() {
-    const name = window.prompt('请输入自定义标签名')
-    if (name === '' || undefined) {
-      alert('标签名不能为空')
-    } else if (this.dataSource) {
-      this.$emit('update:dataSource', [...this.dataSource, name])
+  create() {
+    const name = window.prompt('请输入标签名');
+    if (!name) {
+      return window.alert('标签名不能为空');
     }
+    store.createTag(name);
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .tags {
+  background: white;
   font-size: 14px;
   padding: 16px;
   flex-grow: 1;
@@ -70,7 +69,6 @@ export default class Tags extends Vue {
 
       &.selected {
         background: darken($bg, 50%);
-        animation: bouncing .75s;
         color: white;
       }
     }
@@ -88,6 +86,5 @@ export default class Tags extends Vue {
     }
   }
 }
-
 
 </style>

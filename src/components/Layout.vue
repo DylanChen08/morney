@@ -16,10 +16,9 @@ export default {
 
 <style lang="scss" scoped>
 .layout-wrapper {
-  min-height: 100vh; //控制整个容器高度
-  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .content {

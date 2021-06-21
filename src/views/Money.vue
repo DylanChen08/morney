@@ -1,57 +1,42 @@
 <template>
   <Layout class-prefix="layout">
-    {{ recordList }}
-    <!-- .sync语法糖-->
-    <!-- :value.sync="record.type"===@update:value="onUpdateType" -->
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
     <Types :value.sync="record.type"/>
-    <FormItem :value.sync="record.notes" field-name="备注" place-holder="在这里输入备注"/>
-    <Tags :dataSource.sync="tags" @update:value="onUpdateTags"/>
+    <div class="notes">
+      <FormItem field-name="备注"
+                placeholder="在这里输入备注"
+                @update:value="onUpdateNotes"
+      />
+    </div>
+    <Tags/>
   </Layout>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import {Component, Watch} from "vue-property-decorator";
+import Vue from 'vue';
 import NumberPad from '@/components/Money/NumberPad.vue';
 import Types from '@/components/Money/Types.vue';
+import FormItem from '@/components/Money/FormItem.vue';
 import Tags from '@/components/Money/Tags.vue';
-import {recordListModel} from "@/models/recordListModel";
-import {tagListModel} from "@/models/tagListModel";
-import FormItem from "@/components/Money/FormItem.vue";
+import {Component} from 'vue-property-decorator';
+import store from '@/store/index2.ts';
 
-const recordList = recordListModel.fetch()
-// const tagList = tagListModel.fetch()
-// type RecordItem = {
-//   tags: string[]
-//   notes: string
-//   type: string
-//   amount: number //数据类型
-//   createAt?: Date //类/构造函数
-// }
-
-@Component({components: {FormItem, Tags, Types, NumberPad},})
+@Component({
+  components: {Tags, FormItem, Types, NumberPad}
+})
 export default class Money extends Vue {
-  tags = window.tagList //直接在window上拿
-  // record 必须符合 Record 类型
-  recordList = window.recordList
+  recordList = store.recordList;
   record: RecordItem = {
-    tags: [], notes: '', type: '-', amount: 999
-  }
+    tags: [], notes: '', type: '-', amount: 0
+  };
 
-
-  onUpdateTags(value: string[]) {
-    this.record.tags = value
+  onUpdateNotes(value: string) {
+    this.record.notes = value;
   }
 
   saveRecord() {
-    window.createRecord(this.record)
+    store.createRecord(this.record);
   }
-
-  // @Watch('recordList')
-  // onRecordListChange() {
-  //   window.localStorage.setItem('recordList', JSON.stringify(this.recordList))
-  // }
 }
 </script>
 
@@ -59,6 +44,10 @@ export default class Money extends Vue {
 .layout-content {
   display: flex;
   flex-direction: column-reverse;
+}
+
+.notes {
+  padding: 12px 0;
 }
 </style>
 
