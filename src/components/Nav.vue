@@ -30,7 +30,6 @@ nav {
   position: fixed;
   bottom: 0;
   width: 100%;
-  border: 1px solid red;
   @extend %outerShadow;
   display: flex;
   flex-direction: row;

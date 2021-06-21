@@ -9,6 +9,7 @@
           :key="tag.id"
           @click="toggle(tag)">{{ tag.name }}
       </li>
+
     </ul>
   </div>
 

@@ -13,22 +13,23 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-import {tagListModel} from "@/models/tagLIstModel";
+import {tagListModel} from "@/models/tagListModel";
 import {Component} from "vue-property-decorator";
 
-tagListModel.fetch()
+// tagListModel.fetch()
 @Component
 export default class Labels extends Vue {
-  tags = tagListModel.fetch()
+  // tags = tagListModel.fetch()
+  tags = window.tagList
 
   createTag() {
     const name = window.prompt('请输入标签');
     if (name) {
       const message = tagListModel.create(name)
-      if (message === "duplicated"){
+      if (message === "duplicated") {
         window.alert('标签重复')
-      }else if(message === 'success'){
-        window.alert('标签创建成功')
+      } else if (message === 'success') {
+        console.log('标签创建成功')
       }
       tagListModel.create(name)
       console.log(333);

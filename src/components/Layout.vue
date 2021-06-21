@@ -18,7 +18,6 @@ export default {
 .layout-wrapper {
   min-height: 100vh; //控制整个容器高度
   padding-bottom: 2rem;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
 }
