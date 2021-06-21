@@ -1,5 +1,6 @@
 import {mapActions} from "vuex";
 import createId from "@/lib/createId";
+
 const localStorageKeyName = 'tagList'
 type Tag = {
     id: any
