@@ -18,11 +18,20 @@ Vue.use(VAnimateCss);
 Vue.component('Nav', Nav);
 Vue.component('Layout', Layout);
 Vue.component('Icon', Icon);
-//@ts-ignore
+// @ts-ignore
+
 window.tagList = tagListModel.fetch();
+window.createTag = (name: string) => {
+    const message = tagListModel.create(name)
+    if (message === "duplicated") {
+        window.alert('标签重复')
+    } else if (message === 'success') {
+        console.log('标签创建成功')
+    }
+}
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app');
