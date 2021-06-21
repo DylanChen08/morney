@@ -9,6 +9,7 @@ import Icon from '@/components/Icon.vue';
 // @ts-ignore
 import VAnimateCss from 'v-animate-css';
 import {tagListModel} from "@/models/tagListModel";
+import {recordListModel} from "@/models/recordListModel";
 
 
 Vue.config.productionTip = false;
@@ -18,8 +19,16 @@ Vue.use(VAnimateCss);
 Vue.component('Nav', Nav);
 Vue.component('Layout', Layout);
 Vue.component('Icon', Icon);
-// @ts-ignore
 
+//record store
+window.recordList = recordListModel.fetch()
+window.createRecord = (record: RecordItem) => {
+    //@ts-ignore
+    return recordListModel.save(record)
+}
+
+//tag store
+//@ts-ignore
 window.tagList = tagListModel.fetch();
 window.findTag = (id: string) => {
     return window.tagList.filter(t => t.id === id)[0]

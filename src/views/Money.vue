@@ -34,7 +34,7 @@ const recordList = recordListModel.fetch()
 export default class Money extends Vue {
   tags = window.tagList //直接在window上拿
   // record 必须符合 Record 类型
-  recordList: RecordItem[] = recordList
+  recordList = window.recordList
   record: RecordItem = {
     tags: [], notes: '', type: '-', amount: 999
   }
@@ -45,14 +45,13 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
-    //@ts-ignore
-    recordListModel.save(this.record)
+    window.createRecord(this.record)
   }
 
-  @Watch('recordList')
-  onRecordListChange() {
-    window.localStorage.setItem('recordList', JSON.stringify(this.recordList))
-  }
+  // @Watch('recordList')
+  // onRecordListChange() {
+  //   window.localStorage.setItem('recordList', JSON.stringify(this.recordList))
+  // }
 }
 </script>
 
