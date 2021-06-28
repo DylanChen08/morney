@@ -6,7 +6,9 @@
     <ul class="current">
       <li v-for="tag in tagList" :key="tag.id"
           :class="{selected: selectedTags.indexOf(tag)>=0}"
-          @click="toggle(tag)">{{ tag.name }}
+          @click="toggle(tag)">
+        <Icon name="label"/>
+        {{ tag.name }}
       </li>
     </ul>
   </div>

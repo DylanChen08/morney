@@ -9689,6 +9689,11 @@ schema-utils@^2.6.5, schema-utils@^2.7.0:
     ajv "^6.12.4"
     ajv-keywords "^3.5.2"
 
+scrollmonitor@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.nlark.com/scrollmonitor/download/scrollmonitor-1.2.4.tgz#823d04cc1574aa3b71de7cc70ef91ebe633344a0"
+  integrity sha1-gj0EzBV0qjtx3nzHDvkevmMzRKA=
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
@@ -11094,6 +11099,13 @@ uuid@^3.4.0:
   version "3.4.0"
   resolved "https://registry.nlark.com/uuid/download/uuid-3.4.0.tgz?cache=0&sync_timestamp=1622213136953&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fuuid%2Fdownload%2Fuuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha1-sj5DWK+oogL+ehAK8fX4g/AgB+4=
+
+v-animate-css@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.nlark.com/v-animate-css/download/v-animate-css-0.0.3.tgz#fa3f41e5995404f0e5a741cdb2c576ce01f9df16"
+  integrity sha1-+j9B5ZlUBPDlp0HNssV2zgH53xY=
+  dependencies:
+    scrollmonitor "^1.2.4"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
