@@ -12,10 +12,7 @@
     <br />
     <br />
     <a href="https://dylanchen08.github.io/morney.org/#/money">预览链接</a>
-    ·
-    <a href="https://github.com/DylanChen08/morney/issues">错误反馈</a>
-    ·
-    <a href="https://github.com/DylanChen08/morney/issues">新功能提议</a>
+    
   </p>
 </p>
 
