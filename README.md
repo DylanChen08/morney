@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a>
-    <img src="https://wx3.sinaimg.cn/mw690/82dbebd3gy1grzcjfazt0j205k05kglg.jpg" alt="Logo" width="80" height="80">
+    <img src="https://wx1.sinaimg.cn/mw690/82dbebd3gy1grzcla8mpwj205k05k0sn.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Joy·轻记</h3>
