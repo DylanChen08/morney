@@ -101,7 +101,7 @@ export default class NumberPad extends Vue {
       float: left;
       background: transparent;
       border: none;
-      border-radius: 8px;
+      border-radius: 4px;
 
       &.ok {
         height: 64*2px;
