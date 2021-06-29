@@ -35,7 +35,7 @@
         <li><a href="#installation">启动</a></li>
       </ul>
     </li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact">和我联系</a></li>
   </ol>
 </details>
 
