@@ -30,10 +30,10 @@ import TagHelper from '@/mixins/TagHelper';
 export default class Tags extends mixins(TagHelper) {
   selectedTags: string[] = [];
   tagType = [
-    {chinese: "衣", eng: "clothes"},
-    {chinese: "食", eng: "food"},
-    {chinese: "住", eng: "house"},
-    {chinese: "行", eng: "travel"},
+    {chinese: "衣服", eng: "clothes"},
+    {chinese: "食品", eng: "food"},
+    {chinese: "住宿", eng: "house"},
+    {chinese: "旅行", eng: "travel"},
     {chinese: "礼物", eng: "presents"},
     {chinese: "聚餐", eng: "party"},
     {chinese: "约会", eng: "dating"}

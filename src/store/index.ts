@@ -67,14 +67,14 @@ const store = new Vuex.Store({
             if (!state.tagList || state.tagList.length === 0) {
                 //初始化数组
                 let tagTypes = [
-                    {chinese: "衣", eng: "clothes"},
-                    {chinese: "食", eng: "food"},
-                    {chinese: "住", eng: "house"},
-                    {chinese: "行", eng: "travel"},
+                    {chinese: "衣服", eng: "clothes"},
+                    {chinese: "食品", eng: "food"},
+                    {chinese: "住宿", eng: "house"},
+                    {chinese: "旅行", eng: "travel"},
                     {chinese: "礼物", eng: "presents"},
                     {chinese: "聚餐", eng: "party"},
                     {chinese: "约会", eng: "dating"}
-                ]
+                ];
                 tagTypes.map(tag => {
                     store.commit('createTag', tag.chinese);
                 })
