@@ -20,7 +20,7 @@
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
-  <summary>Table of Contents</summary>
+  <summary>目录</summary>
   <ol>
     <li>
       <a href="#about-the-project">关于项目</a>
@@ -92,7 +92,7 @@ yarn test:unit
 
 <!-- CONTACT -->
 
-## Contact
+## 和我联系
 
 DylanChen - easetreychen@gmail.com
 
