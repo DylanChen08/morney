@@ -7,7 +7,9 @@
       <li v-for="tag in tagList" :key="tag.id"
           :class="{selected: selectedTags.indexOf(tag)>=0}"
           @click="toggle(tag)">
-        <Icon name="label"/>
+        <span v-for="(item,key) in tagType" :key="item.id">
+          <Icon v-if="item.chinese===tag.name" :name="tagType[key].eng"/>
+        </span>
         {{ tag.name }}
       </li>
     </ul>
@@ -24,6 +26,15 @@ import TagHelper from '@/mixins/TagHelper';
 @Component
 export default class Tags extends mixins(TagHelper) {
   selectedTags: string[] = [];
+  tagType = [
+    {chinese: "衣", eng: "clothes"},
+    {chinese: "食", eng: "food"},
+    {chinese: "住", eng: "house"},
+    {chinese: "行", eng: "travel"},
+    {chinese: "礼物", eng: "presents"},
+    {chinese: "聚餐", eng: "party"},
+    {chinese: "约会", eng: "dating"}
+  ];
 
   get tagList() {
     return this.$store.state.tagList;
