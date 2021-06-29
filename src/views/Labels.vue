@@ -4,14 +4,15 @@
       <router-link class="tag"
                    v-for="tag in tags" :key="tag.id"
                    :to="`/labels/edit/${tag.id}`">
-        <span>{{ tag.name }}</span>
+        <span><Icon name="customize"></Icon>{{ tag.name }}</span>
         <Icon name="right"/>
       </router-link>
     </div>
     <div class="createTag-wrapper">
       <Button class="createTag"
               @click="createTag">
-        新建标签
+        <Icon name="create"></Icon>
+        新增标签
       </Button>
     </div>
   </Layout>
@@ -63,7 +64,7 @@ export default class Labels extends mixins(TagHelper) {
 }
 
 .createTag {
-  background: #767676;
+  background: #1989fa;
   color: white;
   border-radius: 4px;
   border: none;

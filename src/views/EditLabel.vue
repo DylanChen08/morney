@@ -11,7 +11,10 @@
                 field-name="标签名" placeholder="请输入标签名"/>
     </div>
     <div class="button-wrapper">
-      <Button @click="remove">删除标签</Button>
+      <Button class="delete" @click="remove">
+        <Icon name="clear"></Icon>
+        删除标签
+      </Button>
     </div>
   </Layout>
 </template>
@@ -92,5 +95,12 @@ export default class EditLabel extends Vue {
   text-align: center;
   padding: 16px;
   margin-top: 44-16px;
+}
+
+.button-wrapper > .delete {
+  color: #fff;
+  background-color: #ee0a24;
+  border: 1px solid #ee0a24;
+  border-radius: 4px;
 }
 </style>

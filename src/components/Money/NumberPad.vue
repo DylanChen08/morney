@@ -5,15 +5,21 @@
       <button v-animate-css.click=animation @click="inputContent">1</button>
       <button v-animate-css.click=animation @click="inputContent">2</button>
       <button v-animate-css.click=animation @click="inputContent">3</button>
-      <button v-animate-css.click=animation @click="remove">删除</button>
+      <button v-animate-css.click=animation @click="remove">
+        <Icon name="delete"/>
+      </button>
       <button v-animate-css.click=animation @click="inputContent">4</button>
       <button v-animate-css.click=animation @click="inputContent">5</button>
       <button v-animate-css.click=animation @click="inputContent">6</button>
-      <button v-animate-css.click=animation @click="clear">清空</button>
+      <button v-animate-css.click=animation @click="clear">
+        <Icon name="clear"/>
+      </button>
       <button v-animate-css.click=animation @click="inputContent">7</button>
       <button v-animate-css.click=animation @click="inputContent">8</button>
       <button v-animate-css.click=animation @click="inputContent">9</button>
-      <button v-animate-css.click=animation @click="ok" class="ok">OK</button>
+      <button v-animate-css.click=animation @click="ok" class="ok">
+        <Icon name="ok"/>
+      </button>
       <button v-animate-css.click=animation @click="inputContent" class="zero">0</button>
       <button v-animate-css.click=animation @click="inputContent">.</button>
     </div>
@@ -87,6 +93,7 @@ export default class NumberPad extends Vue {
 
   .buttons {
     @extend %clearFix;
+    font-size: 23px;
 
     > button {
       width: 25%;
