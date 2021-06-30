@@ -11,7 +11,7 @@
     Joy·轻记是一款基于 Vue + TypeScript 的极简单页面记账应用。助力日常快速记账！
     <br />
     <br />
-    <a href="https://dylanchen08.github.io/morney.org/#/money">预览链接</a>
+    <a href="https://dylanchen08.github.io/morney-website/">预览链接</a>
     
   </p>
 </p>
