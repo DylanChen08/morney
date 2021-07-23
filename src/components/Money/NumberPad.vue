@@ -1,6 +1,6 @@
 <template>
   <div class="numberPad">
-    <div class="output">{{ output }}</div>
+    <div class="output" @click="toggleNumberPad">{{ output }}</div>
     <!--    <div class="buttons">-->
     <!--      <button v-animate-css.click=animation @click="inputContent">1</button>-->
     <!--      <button v-animate-css.click=animation @click="inputContent">2</button>-->
@@ -25,7 +25,6 @@
     <!--    </div>-->
     <van-number-keyboard
         :show="show"
-        :title="keyboardTitle"
         theme="custom"
         extra-key="."
         close-button-text="✔"
@@ -53,8 +52,13 @@ export default class NumberPad extends Vue {
   @Prop(Number) readonly value!: number;
   output = this.value.toString();
   animation: string = 'bounceIn'
-  show = true
-  keyboardTitle = `输入金额: ${this.output}`
+  show = false
+
+  toggleNumberPad() {
+    if (this.show) {
+      this.show = false
+    }else{this.show=true}
+  }
 
   onInput(input: any) {
     console.log(`input ${input}`);
