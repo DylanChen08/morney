@@ -26,6 +26,11 @@ export default {
 @import "~@/assets/style/helper.scss";
 
 nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
   @extend %outerShadow;
   display: flex;
   flex-direction: row;

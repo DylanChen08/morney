@@ -66,17 +66,18 @@ const store = new Vuex.Store({
             state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
             if (!state.tagList || state.tagList.length === 0) {
                 //初始化数组
-                let tagTypes = [
-                    {chinese: "衣服", eng: "clothes"},
-                    {chinese: "食品", eng: "food"},
-                    {chinese: "住宿", eng: "house"},
-                    {chinese: "旅行", eng: "travel"},
-                    {chinese: "礼物", eng: "presents"},
-                    {chinese: "聚餐", eng: "party"},
-                    {chinese: "约会", eng: "dating"}
+                let tagTypes3 = [//对照表
+                    {chinese: "衣服", eng: "clothes",mark:"initialization"},
+                    {chinese: "食品", eng: "food",mark:"initialization"},
+                    {chinese: "住宿", eng: "house",mark:"initialization"},
+                    {chinese: "旅行", eng: "travel",mark:"initialization"},
+                    {chinese: "礼物", eng: "presents",mark:"initialization"},
+                    {chinese: "聚餐", eng: "party",mark:"initialization"},
+                    {chinese: "约会", eng: "dating",mark:"initialization"}
                 ];
-                tagTypes.map(tag => {
-                    store.commit('createTag', tag.chinese);
+                let tagTypes2 = ["衣服", "食品", "住宿", "旅行", "礼物", "聚餐", "约会"]
+                tagTypes2.map(tag => {
+                    store.commit('createTag', tag);
                 })
             }
         },

@@ -10,6 +10,9 @@ import Icon from '@/components/Icon.vue';
 import VAnimateCss from 'v-animate-css';
 import presets from "@/lib/presets";
 
+import {NumberKeyboard} from 'vant';
+
+Vue.use(NumberKeyboard);
 Vue.config.productionTip = false;
 
 presets.autoScroll()
@@ -20,9 +23,9 @@ Vue.component('Icon', Icon);
 
 Vue.use(VAnimateCss);
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app');
 
 
