@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
+    <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type" :description="xxx"/>
     <div class="chart-wrapper" ref="chartWrapper">
       <Chart class="chart" :options="chartOptions"/>
     </div>
@@ -38,6 +38,7 @@ import day from 'dayjs';
   components: {Tabs, Chart},
 })
 export default class Statistics extends Vue {
+  xxx(){return 'ma?'}
   tagString(tags: Tag[]) {
     return tags.length === 0 ? '无' :
         tags.map(t => t.name).join('，');

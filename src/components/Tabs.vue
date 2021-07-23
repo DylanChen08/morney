@@ -11,7 +11,7 @@
         v-model="show"
         :actions="actions"
         cancel-text="取消"
-        description="这是一笔收入或者支出 ?"
+        description="请选择账目类型"
         close-on-click-action
         @select="onSelect"
     />
@@ -28,13 +28,12 @@ import {ActionSheet} from 'vant';
 Vue.use(ActionSheet);
 
 // type DataSourceItem = { text: string, value: string }
-
 @Component
 export default class Tabs extends Vue {
   // @Prop({required: true, type: Array})
   // dataSource!: DataSourceItem[];
-  // @Prop(String)
-  // readonly value!: string;
+  @Prop(String)
+   value!: string;
   // @Prop(String)
   // classPrefix?: string;
   // @Prop({type: String, default: '64px'})
@@ -44,14 +43,14 @@ export default class Tabs extends Vue {
   actions = [{name: '收入'}, {name: '支出'}]
 
   toggleShow() {
-    if (this.show == true) {
+    if (this.show) {
       this.show = false
     } else {
       this.show = true
     }
   }
 
-  onSelect(item) {
+  onSelect(item:any) {
     this.show = false;
     console.log(item.name)
     this.$emit('update:value', item.name);
