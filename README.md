@@ -8,7 +8,7 @@
 <h3 align="center">Joy·轻记</h3>
 
   <p align="center">
-    Joy·轻记是一款基于 Vue + TypeScript 的极简单页面记账应用。助力日常快速记账！
+    Joy·轻记是一款基于 Vue + TypeScript + Vant UI 的极简单页面记账应用。助力日常快速记账！
     <br />
     <br />
     <a href="https://dylanchen08.github.io/morney-website/">预览链接</a>
@@ -45,7 +45,7 @@
 
 ## 关于项目
 
-Joy·轻记是一款基于 Vue + TypeScript 的极简单页面记账应用。助力日常快速记账！该项目由本人独立开发，在此过程中 练习了 Vue 3.0 + Vue Router + Vuex + TypeScript +
+Joy·轻记是一款基于 Vue + TypeScript + Vant UI 的极简单页面记账应用。助力日常快速记账！该项目由本人独立开发，在此过程中 练习了 Vue 3.0 + Vue Router + Vuex + TypeScript +
 vue-property-decorator，是一个轻型的单页面应用。
 
 ✔ 日期记账 <br/>
@@ -58,6 +58,7 @@ vue-property-decorator，是一个轻型的单页面应用。
 * Vue 3.0 + Vue Router + Vuex
 * TypeScript
 * vue-property-decorator
+* Vant UI
 
 <!-- GETTING STARTED -->
 
