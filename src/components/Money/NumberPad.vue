@@ -81,18 +81,14 @@ export default class NumberPad extends Vue {
       Notify({type: 'warning', message: '请输入正确的数字'});
       return;
     }
-    console.log(7777)
     this.output += input.toString();
-    this.keyboardTitle = `输入金额: ${this.output}`
   }
 
   onDelete() {
     if (this.output.length === 1) {
       this.output = '0';
-      this.keyboardTitle = `输入金额: ${this.output}`
     } else {
       this.output = this.output.slice(0, -1);
-      this.keyboardTitle = `输入金额: ${this.output}`
     }
   }
 
