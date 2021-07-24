@@ -19,7 +19,11 @@
       </li>
     </ol>
     <div v-else class="noResult">
-      目前没有相关记录
+      <van-empty :description="descriptionInEmptyBox">
+        <van-button round type="info" class="bottom-button" to="/money">
+          开始记账
+        </van-button>
+      </van-empty>
     </div>
   </Layout>
 </template>
@@ -38,6 +42,7 @@ import day from 'dayjs';
   components: {Tabs, Chart},
 })
 export default class Statistics extends Vue {
+  descriptionInEmptyBox='还没有记录 , 赶快记一笔吧 !'
   description = '查看收入或支出?'
 
   tagString(tags: Tag[]) {
@@ -181,6 +186,10 @@ export default class Statistics extends Vue {
 </script>
 
 <style scoped lang="scss">
+.bottom-button {
+  width: 160px;
+  height: 40px;
+}
 .echarts {
   max-width: 100%;
   height: 400px;

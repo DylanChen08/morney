@@ -1,11 +1,5 @@
 <template>
   <div class="tags">
-    <!--    <div class="new">-->
-    <!--      <button @click="createTag">-->
-    <!--        <Icon name="customize"></Icon>-->
-    <!--        新增标签-->
-    <!--      </button>-->
-    <!--    </div>-->
     <ul class="current">
       <li v-for="tag in tagList" :key="tag.id"
           :class="{selected: selectedTags.indexOf(tag)>=0}"

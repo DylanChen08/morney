@@ -9,11 +9,10 @@
       </router-link>
     </div>
     <div class="createTag-wrapper">
-      <Button class="createTag"
-              @click="createTag">
+      <van-button @click="createTag" round type="info" class="bottom-button">
         <Icon name="create"></Icon>
         新增标签
-      </Button>
+      </van-button>
     </div>
   </Layout>
 </template>
@@ -62,20 +61,16 @@ export default class Labels extends mixins(TagHelper) {
     }
   }
 }
-
-.createTag {
-  background: #1989fa;
-  color: white;
-  border-radius: 4px;
-  border: none;
-  height: 40px;
-  padding: 0 16px;
-
-  &-wrapper {
-    text-align: center;
-    padding: 16px;
-    margin-top: 44-16px;
-  }
+.createTag-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
 }
+.bottom-button {
+  width: 160px;
+  height: 40px;
+}
+
 </style>
 

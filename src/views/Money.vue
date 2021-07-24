@@ -29,6 +29,7 @@ import Tags from '@/components/Money/Tags.vue';
 import {Component} from 'vue-property-decorator';
 import Tabs from '@/components/Tabs.vue';
 import recordTypeList from '@/constants/recordTypeList';
+import { Notify } from 'vant';
 
 @Component({
   components: {Tabs, Tags, FormItem, NumberPad},
@@ -55,11 +56,11 @@ export default class Money extends Vue {
 
   saveRecord() {
     if (!this.record.tags || this.record.tags.length === 0) {
-      return window.alert('请至少选择一个标签');
+      return Notify({ type: 'warning', message: '请至少选择一个标签' });
     }
     this.$store.commit('createRecord', this.record);
     if (this.$store.state.createRecordError === null) {
-      window.alert('已保存');
+      Notify({ type: 'success', message: '已保存' });
       this.record.notes = '';
     }
   }
