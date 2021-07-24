@@ -2,7 +2,8 @@
   <Layout class-prefix="layout">
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
     <Tabs :data-source="recordTypeList"
-          :value.sync="record.type"/>
+          :value.sync="record.type"
+          :description.sync="description"/>
     <div class="createdAt">
       <FormItem field-name="日期"
                 type="date"
@@ -33,6 +34,7 @@ import recordTypeList from '@/constants/recordTypeList';
   components: {Tabs, Tags, FormItem, NumberPad},
 })
 export default class Money extends Vue {
+  description = '标记为收入或支出?'
   get recordList() {
     return this.$store.state.recordList;
   }

@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type" :description="xxx"/>
+    <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type" :description.sync="description"/>
     <div class="chart-wrapper" ref="chartWrapper">
       <Chart class="chart" :options="chartOptions"/>
     </div>
@@ -38,7 +38,8 @@ import day from 'dayjs';
   components: {Tabs, Chart},
 })
 export default class Statistics extends Vue {
-  xxx(){return 'ma?'}
+  description = '查看收入或支出?'
+
   tagString(tags: Tag[]) {
     return tags.length === 0 ? '无' :
         tags.map(t => t.name).join('，');
@@ -112,8 +113,10 @@ export default class Statistics extends Vue {
         axisLabel: {
           formatter: function (value: string, index: number) {
             return value.substr(5);
-          }
-        }
+          },
+
+        },
+
       },
       yAxis: {
         type: 'value',
@@ -122,7 +125,7 @@ export default class Statistics extends Vue {
       series: [{
         symbol: 'circle',
         symbolSize: 12,
-        itemStyle: {borderWidth: 1, color: '#666', borderColor: '#666'},
+        itemStyle: {borderWidth: 0.5, color: 'rgb(25, 137, 250)', borderColor: 'rgb(25, 137, 250)'},
         // lineStyle: {width: 10},
         data: values,
         type: 'line'
@@ -172,7 +175,7 @@ export default class Statistics extends Vue {
     this.$store.commit('fetchRecords');
   }
 
-  type = '-';
+  type = '收入';
   recordTypeList = recordTypeList;
 }
 </script>

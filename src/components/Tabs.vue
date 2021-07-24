@@ -11,7 +11,7 @@
         v-model="show"
         :actions="actions"
         cancel-text="取消"
-        description="请选择账目类型"
+        :description="description"
         close-on-click-action
         @select="onSelect"
     />
@@ -33,7 +33,8 @@ export default class Tabs extends Vue {
   // @Prop({required: true, type: Array})
   // dataSource!: DataSourceItem[];
   @Prop(String)
-   value!: string;
+   value!: string; @Prop(String)
+  description!: string;
   // @Prop(String)
   // classPrefix?: string;
   // @Prop({type: String, default: '64px'})
